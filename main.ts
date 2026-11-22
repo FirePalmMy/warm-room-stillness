@@ -1,4 +1,4 @@
-import { chmodSync, mkdirSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const TEXT = [
@@ -15,11 +15,12 @@ function main(): void {
     throw new Error(`Invalid entry length: ${codePoints} code points`);
   }
 
-  const outDir = process.env.MAKEFUN_LOCAL_OUTPUT_DIR ?? "/output";
+  const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
   const outFile = path.join(outDir, "entry.txt");
 
-  mkdirSync(outDir, { recursive: true, mode: 0o755 });
-  chmodSync(outDir, 0o755);
+  if (!existsSync(outDir)) {
+    mkdirSync(outDir, { recursive: true, mode: 0o755 });
+  }
   writeFileSync(outFile, TEXT, { encoding: "utf8", mode: 0o644 });
   chmodSync(outFile, 0o644);
 }
