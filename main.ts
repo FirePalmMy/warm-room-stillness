@@ -2,11 +2,11 @@ import { chmodSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const TEXT = [
-  "Late rain on a tin roof, slow enough to count.",
-  "Downstairs, the dishes are dry and the latch is turned.",
-  "A hall lamp stays lit, not waiting, just keeping the dark soft.",
-  "Nothing here is timed. Nobody needs the right word.",
-  "The room holds its warmth all night.",
+  "The tires slow on the gravel, then stop.",
+  "The headlights go out. The cooling engine ticks once.",
+  "Up front, two voices drop low to keep the quiet whole.",
+  "Nobody asks if you are awake.",
+  "Someone is already coming around to your side of the car.",
 ].join("\n");
 
 function main(): void {
